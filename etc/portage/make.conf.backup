@@ -1,0 +1,27 @@
+COMMON_FLAGS="-march=native -O2 -pipe"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+
+RUSTFLAGS="${RUSTFLAGS} -C target-cpu=native"
+
+MAKEOPTS="-j8 -l5"
+EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --with-bdeps n --jobs=12 --load-average=12"
+
+#PYTHON_TARGETS="python3_10"
+#PYTHON_SINGLE_TARGET="python3_10"
+LUA_SINGLE_TARGET="luajit"
+VIDEO_CARDS="nvidia"
+
+# NOTE: This stage was built with the bindist Use flag enabled
+# DISTDIR="/var/cache/distfiles"
+# PKGDIR="/var/cache/binpkgs"
+
+# This sets the language of build output to English.
+# Please keep this setting intact when reporting bugs.
+LC_MESSAGES=C.UTF-8
+
+USE="-ipv6 -X -python -perl -nls readline sqlite curl ncurses -cups -postscript -llvm"
+
+GENTOO_MIRRORS="https://gentoo.iro.umontreal.ca/gentoo/"

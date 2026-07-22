@@ -1,0 +1,60 @@
+[theme]
+theme = "modern"
+
+[icons]
+icons = "material-nf"
+
+[[block]]
+block = "disk_iostats"
+device = "nvme1n1"
+format = " $speed_write "
+interval = 1
+
+[[block]]
+block = "cpu"
+format = " CPU $utilization ($frequency) "
+interval = 1
+
+[[block]]
+block = "temperature"
+chip = "coretemp-isa-*"
+format = " CORE $max "
+interval = 1
+
+[[block]]
+block = "memory"
+format = " RAM $mem_used_percents.eng(w:2) "
+interval = 2
+
+[[block]]
+block = "custom"
+command = "sensors -u nvme-pci-e100 2>/dev/null | sed -n '/temp1_input/s/.* //p' | xargs printf 'SN770 %.0f°'"
+interval = 10
+format = " $text "
+
+[[block]]
+block = "custom"
+command = "sensors -u nvme-pci-e200 2>/dev/null | sed -n '/temp1_input/s/.* //p' | xargs printf 'SN7100 %.0f°'"
+interval = 10
+format = " $text "
+
+[[block]]
+block = "nvidia_gpu"
+format = " GPU $temperature "
+interval = 1
+
+[[block]]
+block = "sound"
+driver = "pulseaudio"
+format = " $icon {$volume|Muted} "
+
+[[block]]
+block = "custom"
+command = "fcitx5-remote -n"
+interval = 1
+format = " $text "
+
+[[block]]
+block = "time"
+interval = 10
+format = " $timestamp.datetime(f:'%a %m/%d %R') "

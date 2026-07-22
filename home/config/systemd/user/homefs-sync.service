@@ -1,0 +1,6 @@
+[Unit]
+Description=Sync dotfiles to homefs repository
+
+[Service]
+Type=oneshot
+ExecStart=%h/git/gentoo-layout/sync.sh

@@ -1,0 +1,2 @@
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="3537", ATTR{idProduct}=="1010", ATTR{power/control}="on"
+ACTION=="add", SUBSYSTEM=="usb_device", ATTR{idVendor}=="3537", ATTR{idProduct}=="1010", ATTR{power/control}="on"

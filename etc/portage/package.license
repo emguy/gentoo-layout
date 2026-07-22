@@ -1,0 +1,6 @@
+sys-kernel/linux-firmware linux-fw-redistributable
+sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
+sys-firmware/intel-microcode intel-ucode
+x11-drivers/nvidia-drivers NVIDIA-2025
+www-client/chromium unRAR
+www-client/google-chrome google-chrome

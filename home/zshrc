@@ -1,0 +1,141 @@
+#!/usr/bin/env zsh
+if [ -f '/etc/zshrc' ]; then
+  source /etc/zshrc
+fi
+
+export QMK_DISTRIB_DIR="$HOME/.local/qmk-distrib"
+export QMK_HOME="$HOME/git/qmk-firmware"
+
+# zsh prompt
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '(%b) '
+setopt PROMPT_SUBST
+if [ "$(tput colors 2>/dev/null || echo 8)" -ge 256 ] 2>/dev/null; then
+  PROMPT='%F{226}%n@zsh%f %F{69}%~%f %F{112}${vcs_info_msg_0_}%f%F{69}$%f '
+else
+  PROMPT='%B%F{3}%n@zsh%f%b %B%F{4}%~%f%b %B%F{2}${vcs_info_msg_0_}%f%b%F{4}$%f '
+fi
+
+if [ -f "$HOME/.variables.sh" ]; then
+  source "$HOME/.variables.sh"
+fi
+
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/npm-global/bin"
+
+#if [ -f '/etc/zshrc_Apple_Terminal' ]; then
+#  source /etc/zshrc_Apple_Terminal
+#fi
+
+# Shell is non-interactive.  Be done now!
+# if [[ $- != *i* ]] ; then
+#   return
+# fi
+
+# set LS_COLORS
+# if [ -f "$HOME/.dir_colors" ]; then
+#   eval "$(gdircolors -b $HOME/.dir_colors)"
+# fi
+
+bindkey -e
+bindkey ^v forward-word
+bindkey ^y backward-word
+bindkey ^u backward-kill-line
+
+
+# zsh history configurations
+setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+export HISTSIZE=100000
+export SAVEHIST=100000
+export HISTFILE="$HOME/.zsh_history"
+
+# auto-completion
+autoload -Uz compinit && compinit
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+#export CFLAGS="-march=native -pipe -O2"
+#export LDFLAGS="-L/home/emguy/.local/lib/"
+#export CXXFLAGS="${CFLAGS}"
+#export LESSCOLOR="yes"
+
+export XDG_CONFIG_HOME="$HOME/.config" # lazygit
+
+export NPM_PACKAGES="$HOME/.npm-global"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export MANPATH="$HOME/.local/share/man:$MANPATH"
+
+export KUBE_EDITOR="nvim"
+export DOCKER_CONFIG="$HOME/.docker"
+
+export MANPAGER="/usr/bin/less -R --use-color -Ddc -Du+y"
+
+export HELM_REGISTRY_CONFIG="$HOME/.config/helm/registry/config.json"
+
+#export REGISTRY_AUTH_FILE="$HOME/.config/containers/auth.json"
+
+alias startw="sway |& tee /tmp/wayland.log"
+
+#    ## use gnu binaries
+alias ls="ls --color"
+alias G="lazygit"
+#
+#    alias vm="ssh -p 2222 emguy@localhost"
+#
+alias df="df -h"
+alias du="du -h"
+
+alias less="less -r"
+
+alias dic="sdcv"
+alias iconv="iconv -f gb18030"
+alias gcc="gcc -march=native -pipe -O2"
+alias g++="g++ -std=c++11 -march=native -pipe -O2"
+
+
+alias vim="nvim"
+alias vi="nvim"
+alias rg="rg --no-ignore --no-ignore-dot"
+alias nvimrc="nvim $XDG_CONFIG_HOME/nvim/init.lua"
+alias argbash="docker run -v \$(pwd):/work --rm argbash"
+alias argbash-init="docker run -v \$(pwd):/work --rm -e PROGRAM=argbash-init argbash"
+
+
+#    if [ -x "$(command -v kubectl)" ]; then
+#      # shellcheck source=/dev/null
+#      source <(kubectl completion zsh)
+#    fi
+#
+#    if [ -f "$HOME/.bellshell.sh" ]; then
+#      # shellcheck source=./.bellshell.sh
+#      source "$HOME/.bellshell.sh"
+#    fi
+#
+#    if [ -f "$HOME/.awsshell.sh" ]; then
+#      # shellcheck source=./.awsshell.sh
+#      source "$HOME/.awsshell.sh"
+#    fi
+#
+#    if [ -f "$HOME/.shell_utils.sh" ]; then
+#      # shellcheck source=./.shell_utils.sh
+#      source "$HOME/.shell_utils.sh"
+#    fi
+#
+#    #[ -z "$TMUX" ] && { tmux attach &> /dev/null || exec tmux new-session -s main && exit;}
+#
+#    if [ -d "$HOME/conTeXt" ]; then
+#      export PATH=/home/emguy/conTeXt/tex/texmf-linux-64/bin:$PATH
+#    fi
+#
+
+if [[ $- == *i* ]] && [ ! "${XDG_SESSION_TYPE}" = "tty" ]; then
+  [ -z "$TMUX" ] && { tmux attach &> /dev/null || exec tmux new-session -s main && exit;}
+fi
+
+
+# auto-completion zsh
+autoload -U compinit
+compinit
+zstyle ':completion::complete:*' use-cache 1
