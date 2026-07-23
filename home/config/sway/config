@@ -183,12 +183,9 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-# Volume control with alt key
-bindsym $ALT+bracketleft exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym $ALT+bracketright exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym $ALT+backslash exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-# bindsym XF86MonBrightnessUp exec brightnessctl s +5%
-# bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
+# firefox tweaks
+#bindsym --to-code $ALT+c [app_id="firefox" con_id=__focused__] exec wtype -M ctrl -k c -m ctrl
+#bindsym --to-code $ALT+v [app_id="firefox" con_id=__focused__] exec wtype -M ctrl -k v -m ctrl
 
 
 ### Bar
@@ -202,11 +199,11 @@ bar {
     }
 }
 
+# mouse right click on alt + tap
 bindsym --whole-window Mod1+button1 seat - cursor press button3, seat - cursor release button3
 
-xwayland enable
-
 ### Startup
+xwayland enable
 exec fcitx5 -d
 
 # exec swayidle -w \

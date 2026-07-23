@@ -4,9 +4,10 @@ dev-lua/luv ~amd64
 dev-util/opencode-bin ~amd64
 dev-vcs/lazygit ~amd64
 gui-wm/sway ~amd64
+gui-apps/swayosd ~amd64
 
 x11-misc/i3status-rust ~amd64
 
 # keyboard
-app-misc/via ~amd64
 gui-apps/wev ~amd64
+gui-apps/wtype ~amd64

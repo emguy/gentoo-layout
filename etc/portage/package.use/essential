@@ -25,6 +25,7 @@ x11-libs/cairo         X
 x11-libs/gtk+          X wayland
 media-libs/freetype    harfbuzz
 www-client/firefox-bin wayland
+www-client/firefox wayland dbus
 
 # xwayland
 gui-libs/wlroots       X
