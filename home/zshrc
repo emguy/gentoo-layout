@@ -74,6 +74,8 @@ export MANPAGER="/usr/bin/less -R --use-color -Ddc -Du+y"
 
 export HELM_REGISTRY_CONFIG="$HOME/.config/helm/registry/config.json"
 
+export SWAYSOCK="$(ls /run/user/1000/sway-ipc.*.sock | head -n 1)"
+
 #export REGISTRY_AUTH_FILE="$HOME/.config/containers/auth.json"
 
 alias startw="sway |& tee /tmp/wayland.log"
@@ -99,8 +101,9 @@ alias vim="nvim"
 alias vi="nvim"
 alias rg="rg --no-ignore --no-ignore-dot"
 alias nvimrc="nvim $XDG_CONFIG_HOME/nvim/init.lua"
-alias argbash="docker run -v \$(pwd):/work --rm argbash"
-alias argbash-init="docker run -v \$(pwd):/work --rm -e PROGRAM=argbash-init argbash"
+
+alias steam="steam steam://open/main"
+
 
 
 #    if [ -x "$(command -v kubectl)" ]; then

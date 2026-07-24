@@ -11,3 +11,8 @@ x11-misc/i3status-rust ~amd64
 # keyboard
 gui-apps/wev ~amd64
 gui-apps/wtype ~amd64
+
+#steam
+games-util/steam-launcher ~amd64
+sys-libs/libudev-compat ~amd64
+games-util/game-device-udev-rules ~amd64

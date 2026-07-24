@@ -5,6 +5,7 @@ set -e
 this_dir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 
 included=()
+included+=("/etc/modprobe.d/nvidia.conf")
 included+=("$HOME/.config/dconf/")
 #included+=("$HOME/.config/fcitx5/")
 included+=("$HOME/.config/foot/")
