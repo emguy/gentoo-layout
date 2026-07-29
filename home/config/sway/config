@@ -12,7 +12,7 @@ set $right l
 
 set $term foot
 set $www  firefox-bin
-set $menu bemenu-run --no-exec
+set $menu bemenu-run -b --no-exec
 
 ### Input configuration
 input type:keyboard {
@@ -95,10 +95,10 @@ bindsym $ALT+$up   focus up
 bindsym $ALT+$right focus right
 
 # Move focused window with direction keys
-bindsym $ALT+Shift+$left move left
-bindsym $ALT+Shift+$down move down
-bindsym $ALT+Shift+$up move up
-bindsym $ALT+Shift+$right move right
+bindsym $ALT+Ctrl+$left move left
+bindsym $ALT+Ctrl+$down move down
+bindsym $ALT+Ctrl+$up move up
+bindsym $ALT+Ctrl+$right move right
 
 ### Resizing
 mode "resize" {
@@ -133,8 +133,8 @@ bindsym $ALT+8 workspace number 8
 bindsym $ALT+9 workspace number 9
 bindsym $ALT+0 workspace number 10
 
-bindsym $ALT+n workspace next
-bindsym $ALT+p workspace prev
+bindsym $ALT+Shift+l workspace next
+bindsym $ALT+Shift+h workspace prev
 
 # Move focused container to workspace
 bindsym $ALT+Shift+1 move container to workspace number 1
@@ -204,19 +204,45 @@ bar {
     }
 }
 
+# show app_id and class in i3status
+for_window [app_id=".*"] title_format "%app_id — %title"
+for_window [class=".*"] title_format "%class — %title"
+
 # mouse right click on alt + tap
 bindsym --whole-window Mod1+button1 seat - cursor press button3, seat - cursor release button3
 
 # steam
 for_window [class="steam"] move to workspace 3
 
+# wallpaper
+output * background ~/Pictures/wallpaper/wallpaper.png fill
+
+# Move all native Wine apps to workspace 5 and enable floating
+assign [app_id="^wine.*"] 5
+for_window [app_id="^wine.*"] floating enable
+
+# copy and paste for firefox
+bindsym Alt+c exec ~/.config/sway/sway-bindsym-alt-c.sh
+bindsym Alt+v exec ~/.config/sway/sway-bindsym-alt-v.sh
+
+
+# Match HoMM3 / Wine Launcher and force it to float cleanly
+for_window [title="Heroes of Might and Magic III.*"] floating enable, border none
+for_window [class="Wine"] floating enable
+
+# Forces Sway to hand over absolute pointer constraints to XWayland
+seat * shortcuts_inhibitor enable
+
+
 ### Startup
 xwayland enable
 exec fcitx5 -d
-exec steam -silient > /tmp/steam.log 2>&1
+exec steam > /tmp/steam.log 2>&1
 
-# exec swayidle -w \
-#     timeout 300 'swaylock -f -c 000000' \
-#     timeout 600 'swaymsg "output * dpms off"' \
-#     resume 'swaymsg "output * dpms on"' \
-#     before-sleep 'swaylock -f -c 000000'
+exec swaylock -f
+
+exec swayidle -w \
+    timeout 600 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' \
+    before-sleep 'swaylock -f'

@@ -33,9 +33,9 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/.local/npm-global/bin"
 # fi
 
 # set LS_COLORS
-# if [ -f "$HOME/.dir_colors" ]; then
-#   eval "$(gdircolors -b $HOME/.dir_colors)"
-# fi
+if [ -f "$HOME/.dir_colors" ]; then
+  eval "$(dircolors -b $HOME/.dir_colors)"
+fi
 
 bindkey -e
 bindkey ^v forward-word
@@ -72,9 +72,9 @@ export DOCKER_CONFIG="$HOME/.docker"
 
 export MANPAGER="/usr/bin/less -R --use-color -Ddc -Du+y"
 
-export HELM_REGISTRY_CONFIG="$HOME/.config/helm/registry/config.json"
+#export HELM_REGISTRY_CONFIG="$HOME/.config/helm/registry/config.json"
 
-export SWAYSOCK="$(ls /run/user/1000/sway-ipc.*.sock | head -n 1)"
+# export SWAYSOCK="$(ls /run/user/1000/sway-ipc.*.sock | head -n 1)"
 
 #export REGISTRY_AUTH_FILE="$HOME/.config/containers/auth.json"
 
@@ -142,3 +142,7 @@ fi
 autoload -U compinit
 compinit
 zstyle ':completion::complete:*' use-cache 1
+
+
+# this needs to be at the very end
+source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh

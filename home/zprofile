@@ -1,14 +1,4 @@
 if [ "${XDG_SESSION_TYPE}" = "tty" ] && [ "${XDG_VTNR}" = "1" ] && [ -z "${SSH_TTY}" ] && [ -z "${SSH_CONNECTION}" ]; then
-  echo "Authenticate via fprintd"
-  timeout 6 systemctl is-active --wait -q fprintd.service 2>/dev/null || true
-  if timeout 20 fprintd-verify > /dev/null; then
-    :  # fingerprint ok
-  elif sudo -k && sudo -v > /dev/null 2>&1; then
-    echo "Authenticated via password."
-  else
-    logout
-  fi
-
   export XMODIFIERS=@im=fcitx
   export GTK_IM_MODULE=fcitx
   export QT_IM_MODULE=fcitx

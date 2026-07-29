@@ -16,3 +16,9 @@ gui-apps/wtype ~amd64
 games-util/steam-launcher ~amd64
 sys-libs/libudev-compat ~amd64
 games-util/game-device-udev-rules ~amd64
+
+#firefox
+www-client/firefox ~amd64
+
+#wine
+gui-wm/gamescope ~amd64
