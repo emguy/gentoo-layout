@@ -22,3 +22,6 @@ www-client/firefox ~amd64
 
 #wine
 gui-wm/gamescope ~amd64
+
+#logitech
+app-misc/ltunify ~amd64
