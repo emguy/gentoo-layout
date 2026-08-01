@@ -1,6 +1,8 @@
 # Sway configuration file
 # See `man 5 sway` for documentation
 
+seat seat0 xcursor_theme Adwaita 24
+
 output * mode 1920x1080@60Hz
 
 ### Variables
@@ -212,7 +214,7 @@ for_window [class=".*"] title_format "%class — %title"
 bindsym --whole-window Mod1+button1 seat - cursor press button3, seat - cursor release button3
 
 # steam
-for_window [class="steam"] move to workspace 3
+for_window [class="steam"] move to workspace 8
 
 # wallpaper
 output * background ~/Pictures/wallpaper/wallpaper.png fill
@@ -232,6 +234,9 @@ for_window [class="Wine"] floating enable
 
 # Forces Sway to hand over absolute pointer constraints to XWayland
 seat * shortcuts_inhibitor enable
+
+for_window [app_id=".*"] inhibit_idle fullscreen
+for_window [class=".*"] inhibit_idle fullscreen
 
 
 ### Startup

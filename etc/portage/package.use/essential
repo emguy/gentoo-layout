@@ -54,3 +54,7 @@ x11-libs/gtk+          X wayland
 media-libs/freetype    harfbuzz
 www-client/firefox-bin wayland
 www-client/firefox wayland dbus
+
+# gfx
+virtual/imagemagick-tools png tiff jpeg
+media-gfx/imagemagick tiff jpeg

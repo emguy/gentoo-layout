@@ -1,0 +1,8 @@
+dev-libs/xerces icu
+sci-libs/opencascade json
+dev-qt/qtbase opengl
+dev-python/pyside svg uitools
+x11-drivers/nvidia-drivers tools
+dev-python/pillow webp
+dev-qt/qttools opengl
+
