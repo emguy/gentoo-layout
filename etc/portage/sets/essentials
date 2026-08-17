@@ -69,6 +69,7 @@ dev-build/meson
 dev-build/meson-format-array
 dev-build/ninja
 dev-python/uv
+llvm-core/clang
 sys-apps/help2man
 
 # image processing

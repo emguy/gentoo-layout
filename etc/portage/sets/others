@@ -1,12 +1,18 @@
-# steam
+# wine
 dev-util/mingw64-toolchain
-games-util/game-device-udev-rules
-games-util/steam-launcher
-llvm-core/clang
 virtual/wine
+
+# steam
+games-util/game-device-udev-rules
 
 # qmk
 dev-libs/hidapi
 
 # sci
 dev-python/numpy
+
+# blender
+media-gfx/blender-bin
+
+# gimp
+media-gfx/gimp

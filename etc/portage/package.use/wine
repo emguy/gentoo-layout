@@ -1,4 +1,8 @@
-virtual/wine -abi_x86_32
+app-emulation/wine-vanilla X
+
+app-emulation/wine-gecko abi_x86_32
+media-libs/vulkan-loader abi_x86_32
+dev-util/mingw64-toolchain abi_x86_32
+
 media-libs/libsdl2 gles2
 app-text/xmlto text
-app-emulation/wine-vanilla X

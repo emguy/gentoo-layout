@@ -1,0 +1,17 @@
+# freecad
+#dev-libs/xerces-c icu
+#sci-libs/opencascade json
+#dev-qt/qtbase opengl
+#dev-python/pyside svg uitools
+##x11-drivers/nvidia-drivers tools
+#dev-python/pillow webp
+#dev-qt/qttools opengl
+
+# blender
+media-gfx/blender-bin cuda
+
+# gimp
+media-gfx/gimp wayland
+app-text/poppler cairo
+media-libs/babl lcms
+media-libs/gegl cairo lcms

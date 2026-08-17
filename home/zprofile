@@ -2,7 +2,14 @@ if [ "${XDG_SESSION_TYPE}" = "tty" ] && [ "${XDG_VTNR}" = "1" ] && [ -z "${SSH_T
   export XMODIFIERS=@im=fcitx
   export GTK_IM_MODULE=fcitx
   export QT_IM_MODULE=fcitx
+
   export SWAY_UNSUPPORTED_GPU="true"
+
+  export MOZ_ENABLE_WAYLAND=1
+
+  export QT_QPA_PLATFORM=wayland
+
+  export BEMENU_BACKEND=wayland
 
   export DXVK_CONFIG_FILE="$HOME/.config/dxvk/dxvk.conf"
   sway |& tee /tmp/sway.log

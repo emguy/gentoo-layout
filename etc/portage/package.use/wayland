@@ -1,0 +1,42 @@
+# xwayland
+x11-base/xwayland      libei
+gui-libs/wlroots       X
+gui-wm/sway            X wallpapers
+media-libs/libepoxy    X
+media-libs/libglvnd    X
+media-libs/mesa        wayland X
+
+# sway
+gui-apps/swaybg         gdk-pixbuf
+dev-libs/bemenu        wayland
+x11-libs/libxkbcommon          wayland
+x11-misc/i3status-rust pulseaudio
+
+# i18n
+app-i18n/fcitx -enchant keyboard wayland
+app-i18n/fcitx-gtk gtk3 -gtk4 wayland
+app-i18n/fcitx-chinese-addons -gui -cloudpinyin -opencc
+dev-qt/qtbase wayland opengl
+
+# gtk
+x11-libs/cairo         X
+x11-libs/gtk+          wayland -X
+media-libs/freetype    harfbuzz
+
+# firefox
+www-client/firefox wayland dbus
+
+# firefox
+media-libs/libvpx postproc
+www-client/firefox wayland system-pipewire pulseaudio -telemetry
+
+# gfx
+virtual/imagemagick-tools png tiff jpeg
+media-gfx/imagemagick tiff jpeg
+media-gfx/imv wayland
+
+# wine
+app-emulation/wine-vanilla wayland
+
+# others
+media-libs/gst-plugins-base wayland

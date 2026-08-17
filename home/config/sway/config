@@ -13,8 +13,8 @@ set $up k
 set $right l
 
 set $term foot
-set $www  firefox-bin
-set $menu bemenu-run -b --no-exec
+set $www  firefox
+set $menu bemenu-run --bottom
 
 ### Input configuration
 input type:keyboard {
@@ -190,10 +190,6 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-# firefox tweaks
-#bindsym --to-code $ALT+c [app_id="firefox" con_id=__focused__] exec wtype -M ctrl -k c -m ctrl
-#bindsym --to-code $ALT+v [app_id="firefox" con_id=__focused__] exec wtype -M ctrl -k v -m ctrl
-
 
 ### Bar
 bar {
@@ -214,7 +210,7 @@ for_window [class=".*"] title_format "%class — %title"
 bindsym --whole-window Mod1+button1 seat - cursor press button3, seat - cursor release button3
 
 # steam
-for_window [class="steam"] move to workspace 8
+for_window [class="steam"] move to workspace 5
 
 # wallpaper
 output * background ~/Pictures/wallpaper/wallpaper.png fill
@@ -228,9 +224,8 @@ bindsym Alt+c exec ~/.config/sway/sway-bindsym-alt-c.sh
 bindsym Alt+v exec ~/.config/sway/sway-bindsym-alt-v.sh
 
 
-# Match HoMM3 / Wine Launcher and force it to float cleanly
-for_window [title="Heroes of Might and Magic III.*"] floating enable, border none
-for_window [class="Wine"] floating enable
+
+
 
 # Forces Sway to hand over absolute pointer constraints to XWayland
 seat * shortcuts_inhibitor enable
@@ -242,9 +237,9 @@ for_window [class=".*"] inhibit_idle fullscreen
 ### Startup
 xwayland enable
 exec fcitx5 -d
-exec steam > /tmp/steam.log 2>&1
+exec ~/.local/share/Steam/steam.sh > /tmp/steam.log 2>&1
 
-exec swaylock -f
+#exec swaylock -f
 
 exec swayidle -w \
     timeout 600 'swaylock -f -c 000000' \

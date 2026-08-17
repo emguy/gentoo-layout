@@ -1,0 +1,26 @@
+*/* CPU_FLAGS_X86: aes avx avx2 avx_vnni bmi1 bmi2 f16c fma3 mmx mmxext pclmul popcnt rdrand sha sse sse2 sse3 sse4_1 sse4_2 ssse3 vpclmulqdq
+*/* VIDEO_CARDS: -* nvidia
+
+# infra
+*/* nvidia vdpau nvenc
+sys-kernel/installkernel -systemd
+sys-boot/refind          -ext2 -ext4 btrfs
+net-wireless/iwd         standalone
+
+# alsa
+media-plugins/alsa-plugins -pulseaudio
+media-video/pipewire       dbus sound-server
+
+# required by fprintd
+media-libs/opencv features2d
+sys-apps/systemd policykit
+
+# admin
+app-admin/sudo -sendmail
+
+# editors
+app-editors/neovim     lua_single_target_luajit
+app-shells/zsh         -gdbm -pcre
+
+# graphics
+x11-drivers/nvidia-drivers wayland -tools

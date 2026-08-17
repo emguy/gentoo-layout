@@ -13,7 +13,7 @@ media-fonts/noto
 media-fonts/noto-cjk
 media-fonts/noto-emoji
 media-gfx/imv
-www-client/firefox-bin
+www-client/firefox
 x11-drivers/nvidia-drivers
 x11-misc/i3status-rust
 x11-misc/xdg-user-dirs

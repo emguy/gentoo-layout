@@ -17,11 +17,14 @@ games-util/steam-launcher ~amd64
 sys-libs/libudev-compat ~amd64
 games-util/game-device-udev-rules ~amd64
 
-#firefox
+##firefox
+dev-libs/nss ~amd64
+www-client/firefox-l10n ~amd64
 www-client/firefox ~amd64
 
 #wine
 gui-wm/gamescope ~amd64
 
-#logitech
-app-misc/ltunify ~amd64
+#blender-bin
+media-gfx/blender-bin ~amd64
+

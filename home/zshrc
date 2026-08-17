@@ -102,7 +102,7 @@ alias vi="nvim"
 alias rg="rg --no-ignore --no-ignore-dot"
 alias nvimrc="nvim $XDG_CONFIG_HOME/nvim/init.lua"
 
-alias steam="steam steam://open/main"
+alias steam="~/.local/share/Steam/steam.sh steam://open/main"
 
 
 
