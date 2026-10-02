@@ -11,6 +11,8 @@ sys-fs/btrfsmaintenance
 sys-kernel/gentoo-sources
 sys-kernel/installkernel
 sys-kernel/linux-firmware
+sys-kernel/dracut
+sys-power/upower
 
 # fprintd (patched)
 # required by https://github.com/archeYR/libfprint-CS9711

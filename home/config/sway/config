@@ -49,7 +49,7 @@ smart_borders on
 default_border pixel 1
 default_floating_border normal
 focus_follows_mouse yes
-mouse_warping container
+#mouse_warping container
 
 # Colors
 set $bg      #2e3440
@@ -124,31 +124,31 @@ bindsym $ALT+r mode "resize"
 
 
 # Workspaces
-bindsym $ALT+1 workspace number 1
-bindsym $ALT+2 workspace number 2
-bindsym $ALT+3 workspace number 3
-bindsym $ALT+4 workspace number 4
-bindsym $ALT+5 workspace number 5
-bindsym $ALT+6 workspace number 6
-bindsym $ALT+7 workspace number 7
-bindsym $ALT+8 workspace number 8
-bindsym $ALT+9 workspace number 9
-bindsym $ALT+0 workspace number 10
+bindsym Mod4+q workspace number 1
+bindsym Mod4+w workspace number 2
+bindsym Mod4+e workspace number 3
+bindsym Mod4+r workspace number 4
+bindsym Mod4+t workspace number 5
+bindsym Mod4+y workspace number 6
+bindsym Mod4+u workspace number 7
+bindsym Mod4+i workspace number 8
+bindsym Mod4+o workspace number 9
+bindsym Mod4+p workspace number 10
 
 bindsym $ALT+Shift+l workspace next
 bindsym $ALT+Shift+h workspace prev
 
 # Move focused container to workspace
-bindsym $ALT+Shift+1 move container to workspace number 1
-bindsym $ALT+Shift+2 move container to workspace number 2
-bindsym $ALT+Shift+3 move container to workspace number 3
-bindsym $ALT+Shift+4 move container to workspace number 4
-bindsym $ALT+Shift+5 move container to workspace number 5
-bindsym $ALT+Shift+6 move container to workspace number 6
-bindsym $ALT+Shift+7 move container to workspace number 7
-bindsym $ALT+Shift+8 move container to workspace number 8
-bindsym $ALT+Shift+9 move container to workspace number 9
-bindsym $ALT+Shift+0 move container to workspace number 10
+bindsym Mod4+Shift+q move container to workspace number 1
+bindsym Mod4+Shift+w move container to workspace number 2
+bindsym Mod4+Shift+e move container to workspace number 3
+bindsym Mod4+Shift+r move container to workspace number 4
+bindsym Mod4+Shift+t move container to workspace number 5
+bindsym Mod4+Shift+y move container to workspace number 6
+bindsym Mod4+Shift+u move container to workspace number 7
+bindsym Mod4+Shift+i move container to workspace number 8
+bindsym Mod4+Shift+o move container to workspace number 9
+bindsym Mod4+Shift+p move container to workspace number 10
 
 # Scratchpad
 bindsym $ALT+Shift+minus move scratchpad
@@ -186,9 +186,11 @@ bindsym $ALT+q exec $www
 # bindsym $ALT+Print exec grim -g "$(slurp)"
 
 # Media keys
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec ~/.config/sway/sway-volume-up.sh
+bindsym XF86AudioLowerVolume exec ~/.config/sway/sway-volume-down.sh
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym Shift+XF86AudioRaiseVolume exec ~/.config/sway/sway-shairport-volume-up.sh
+bindsym Shift+XF86AudioLowerVolume exec ~/.config/sway/sway-shairport-volume-down.sh
 
 
 ### Bar
@@ -215,13 +217,13 @@ for_window [class="steam"] move to workspace 5
 # wallpaper
 output * background ~/Pictures/wallpaper/wallpaper.png fill
 
-# Move all native Wine apps to workspace 5 and enable floating
-assign [app_id="^wine.*"] 5
-for_window [app_id="^wine.*"] floating enable
+## Move all native Wine apps to workspace 5 and enable floating
+#assign [app_id="^wine.*"] 5
+#for_window [app_id="^wine.*"] floating enable
 
-# copy and paste for firefox
-bindsym Alt+c exec ~/.config/sway/sway-bindsym-alt-c.sh
-bindsym Alt+v exec ~/.config/sway/sway-bindsym-alt-v.sh
+# Copy / paste with Super+C / Super+V -- only in Firefox
+bindsym --release --no-repeat Mod4+c exec ~/.config/sway/sway-ff-clip.sh copy
+bindsym --release --no-repeat Mod4+v exec ~/.config/sway/sway-ff-clip.sh paste
 
 
 
@@ -237,7 +239,10 @@ for_window [class=".*"] inhibit_idle fullscreen
 ### Startup
 xwayland enable
 exec fcitx5 -d
-exec ~/.local/share/Steam/steam.sh > /tmp/steam.log 2>&1
+
+# wob volume overlay (reads values from its FIFO on stdin)
+exec sh -c '[ -p "$XDG_RUNTIME_DIR/wob.fifo" ] || mkfifo -m 600 "$XDG_RUNTIME_DIR/wob.fifo"; pgrep -x wob >/dev/null || exec wob <> "$XDG_RUNTIME_DIR/wob.fifo"'
+exec STEAM_LINUX_RUNTIME_LOG=1 STEAM_LINUX_RUNTIME_VERBOSE=1 ~/.local/share/Steam/steam.sh > /tmp/steam.log 2>&1
 
 #exec swaylock -f
 

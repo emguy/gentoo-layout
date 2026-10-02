@@ -61,15 +61,33 @@ format = " GPU $temperature "
 interval = 1
 
 [[block]]
+block = "custom"
+interval = 0.5
+hide_when_empty = true
+format = " $text "
+command = '''
+pactl -f json list sink-inputs 2>/dev/null \
+  | jq -r '[.[] | "\(.properties["application.name"] // .properties["application.process.binary"] // "?") \(.volume["front-left"].value_percent)\(if .mute then " (muted)" else "" end)"] | join("  ")'
+'''
+
+[[block]]
 block = "sound"
 driver = "pulseaudio"
-format = " $icon {$volume|Muted} "
+format = " Mixer {$volume|Muted} "
 
 [[block]]
 block = "custom"
 command = "fcitx5-remote -n"
 interval = 1
 format = " $text "
+
+[[block]]
+block = "custom"
+json = true
+command = "/home/emguy/.config/i3status-rust/urchin_battery.py"
+interval = 120
+hide_when_empty = true
+format = " $icon $text "
 
 [[block]]
 block = "time"

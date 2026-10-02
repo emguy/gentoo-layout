@@ -1,4 +1,5 @@
 app-editors/neovim ~amd64
+dev-libs/tree-sitter-markdown-inline ~amd64
 dev-lua/luv ~amd64
 
 dev-util/opencode-bin ~amd64
@@ -21,10 +22,18 @@ games-util/game-device-udev-rules ~amd64
 dev-libs/nss ~amd64
 www-client/firefox-l10n ~amd64
 www-client/firefox ~amd64
+media-libs/dav1d ~amd64
 
 #wine
 gui-wm/gamescope ~amd64
 
 #blender-bin
 media-gfx/blender-bin ~amd64
+
+
+#bambu-studio
+media-gfx/bambustudio-bin ~amd64
+
+gui-apps/wob ~amd64
+gui-apps/swayosd ~amd64
 

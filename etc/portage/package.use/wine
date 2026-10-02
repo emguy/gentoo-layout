@@ -1,8 +1,21 @@
-app-emulation/wine-vanilla X
+app-emulation/wine-vanilla -X
 
 app-emulation/wine-gecko abi_x86_32
-media-libs/vulkan-loader abi_x86_32
+media-libs/vulkan-loader abi_x86_32 wayland X
 dev-util/mingw64-toolchain abi_x86_32
 
 media-libs/libsdl2 gles2
 app-text/xmlto text
+
+
+
+dev-libs/wayland abi_x86_32
+dev-libs/libffi abi_x86_32
+
+x11-libs/libX11 abi_x86_32
+x11-libs/libXrandr abi_x86_32
+x11-libs/libXext abi_x86_32
+x11-libs/libXrender abi_x86_32
+x11-libs/libxcb abi_x86_32
+x11-libs/libXau abi_x86_32
+x11-libs/libXdmcp abi_x86_32

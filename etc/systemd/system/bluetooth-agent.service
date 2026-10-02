@@ -7,7 +7,7 @@ Requires=bluetooth.service
 Type=oneshot
 RemainAfterExit=yes
 ExecStartPre=/bin/sh -c 'for i in $(seq 10); do /usr/bin/bluetoothctl show >/dev/null 2>&1 && break; sleep 1; done'
-ExecStart=/bin/sh -c 'printf "power on\ndiscoverable off\npairable on\nagent on\ndefault-agent\n" | bluetoothctl'
+ExecStart=/bin/sh -c 'printf "power on\ndiscoverable off\nmenu mgmt\nconnectable on\nback\npairable on\nagent on\ndefault-agent\n" | bluetoothctl'
 
 [Install]
 WantedBy=multi-user.target

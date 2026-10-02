@@ -3,6 +3,10 @@ if [ -f '/etc/zshrc' ]; then
   source /etc/zshrc
 fi
 
+if [ -f "$HOME/.personalrc" ]; then
+  source "$HOME/.personalrc"
+fi
+
 export QMK_DISTRIB_DIR="$HOME/.local/qmk-distrib"
 export QMK_HOME="$HOME/git/qmk-firmware"
 
