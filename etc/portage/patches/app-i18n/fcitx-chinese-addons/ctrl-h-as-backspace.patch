@@ -1,0 +1,13 @@
+--- a/im/table/state.cpp
++++ b/im/table/state.cpp
+@@ -922,8 +922,9 @@
+                     context->clear();
+                     event.filterAndAccept();
+                 }
+             } else if (event.key().check(FcitxKey_BackSpace) ||
+-                       event.key().check(FcitxKey_BackSpace, KeyState::Ctrl)) {
++                       event.key().check(FcitxKey_BackSpace, KeyState::Ctrl) ||
++                       event.key().check(FcitxKey_H, KeyState::Ctrl)) {
+                 // Commit the last segment if it is selected.
+                 if (*config.commitAfterSelect && context->selected() &&
+                     (std::get<bool>(context->selectedSegment(

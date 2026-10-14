@@ -1,9 +1,10 @@
 # Sway configuration file
-# See `man 5 sway` for documentation
+# See `man 5 sway` for     documentation
 
 seat seat0 xcursor_theme Adwaita 24
 
-output * mode 1920x1080@60Hz
+output * mode 3440x1440@100Hz
+output * adaptive_sync on
 
 ### Variables
 set $ALT Mod1
@@ -19,8 +20,8 @@ set $menu bemenu-run --bottom
 ### Input configuration
 input type:keyboard {
     xkb_layout us
-    repeat_delay 220
-    repeat_rate 30
+    repeat_delay 250
+    repeat_rate 20
 }
 
 input type:touchpad {
@@ -40,15 +41,15 @@ input type:touchpad {
 # output HDMI-A-1 resolution 1920x1080 position 0,0
 
 ### Window gaps
-gaps inner 2
-gaps outer 2
+gaps inner 3
+gaps outer 3
 smart_gaps on
 smart_borders on
 
 ### Appearance
 default_border pixel 1
 default_floating_border normal
-focus_follows_mouse yes
+focus_follows_mouse no
 #mouse_warping container
 
 # Colors
@@ -81,7 +82,7 @@ client.background       $bg
 # Reload / restart / exit
 bindsym $ALT+Shift+c reload
 bindsym $ALT+Shift+r restart
-bindsym $ALT+Shift+BackSpace exit
+bindsym $ALT+Shift+t exit
 
 # layout modes
 bindsym $ALT+Tab layout toggle tabbed split
@@ -124,31 +125,29 @@ bindsym $ALT+r mode "resize"
 
 
 # Workspaces
-bindsym Mod4+q workspace number 1
-bindsym Mod4+w workspace number 2
-bindsym Mod4+e workspace number 3
-bindsym Mod4+r workspace number 4
-bindsym Mod4+t workspace number 5
-bindsym Mod4+y workspace number 6
-bindsym Mod4+u workspace number 7
-bindsym Mod4+i workspace number 8
-bindsym Mod4+o workspace number 9
-bindsym Mod4+p workspace number 10
+bindsym Mod4+a workspace number 1
+bindsym Mod4+s workspace number 2
+bindsym Mod4+d workspace number 3
+bindsym Mod4+f workspace number 4
+bindsym Mod4+g workspace number 5
+bindsym Mod4+h workspace number 6
+bindsym Mod4+j workspace number 7
+bindsym Mod4+k workspace number 8
+bindsym Mod4+l workspace number 9
 
 bindsym $ALT+Shift+l workspace next
 bindsym $ALT+Shift+h workspace prev
 
 # Move focused container to workspace
-bindsym Mod4+Shift+q move container to workspace number 1
-bindsym Mod4+Shift+w move container to workspace number 2
-bindsym Mod4+Shift+e move container to workspace number 3
-bindsym Mod4+Shift+r move container to workspace number 4
-bindsym Mod4+Shift+t move container to workspace number 5
-bindsym Mod4+Shift+y move container to workspace number 6
-bindsym Mod4+Shift+u move container to workspace number 7
-bindsym Mod4+Shift+i move container to workspace number 8
-bindsym Mod4+Shift+o move container to workspace number 9
-bindsym Mod4+Shift+p move container to workspace number 10
+bindsym Mod4+Shift+a move container to workspace number 1
+bindsym Mod4+Shift+s move container to workspace number 2
+bindsym Mod4+Shift+d move container to workspace number 3
+bindsym Mod4+Shift+f move container to workspace number 4
+bindsym Mod4+Shift+g move container to workspace number 5
+bindsym Mod4+Shift+h move container to workspace number 6
+bindsym Mod4+Shift+j move container to workspace number 7
+bindsym Mod4+Shift+k move container to workspace number 8
+bindsym Mod4+Shift+l move container to workspace number 9
 
 # Scratchpad
 bindsym $ALT+Shift+minus move scratchpad

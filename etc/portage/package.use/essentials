@@ -21,6 +21,4 @@ app-admin/sudo -sendmail
 # editors
 app-editors/neovim     lua_single_target_luajit
 app-shells/zsh         -gdbm -pcre
-
-# graphics
-x11-drivers/nvidia-drivers wayland -tools
+dev-lua/luv            lua_single_target_luajit -lua_single_target_lua5-4

@@ -78,3 +78,9 @@ sys-apps/help2man
 virtual/imagemagick-tools
 media-gfx/imagemagick
 media-sound/alsa-utils
+
+# required by shairport-sync
+dev-libs/libconfig
+
+# required by copy-paste in opencode
+gui-apps/wl-clipboard
