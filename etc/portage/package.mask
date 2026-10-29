@@ -11,3 +11,6 @@
 # >=llvm-runtimes/compiler-rt-sanitizers-22
 # >=llvm-runtimes/openmp-22
 # >=dev-lang/rust-bin-1.95
+
+# required by pcmanfm
+>=app-crypt/gcr-4.4.0

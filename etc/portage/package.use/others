@@ -18,3 +18,8 @@ media-libs/gegl cairo lcms
 
 # bambustudio-bin
 net-libs/webkit-gtk wayland
+
+# pcmanfm
+x11-libs/libfm gtk -automount
+#app-crypt/gcr gtk
+gnome-base/gvfs -gcr

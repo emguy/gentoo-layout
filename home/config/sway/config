@@ -15,6 +15,7 @@ set $right l
 
 set $term foot
 set $www  firefox
+set $fm pcmanfm
 set $menu bemenu-run --bottom
 
 ### Input configuration
@@ -41,22 +42,23 @@ input type:touchpad {
 # output HDMI-A-1 resolution 1920x1080 position 0,0
 
 ### Window gaps
-gaps inner 3
-gaps outer 3
-smart_gaps on
+gaps inner 0
+gaps outer 0
+#smart_gaps on
 smart_borders on
 
 ### Appearance
 default_border pixel 1
 default_floating_border normal
-focus_follows_mouse no
+focus_follows_mouse yes
 #mouse_warping container
 
 # Colors
 set $bg      #2e3440
 set $fg      #d8dee9
-set $focused #81a1c1
+set $focused #824F6E
 set $urgent  #bf616a
+font pango:Monaco Nerd Font Mono 11
 
 client.focused          $focused $focused $fg $bg $focused
 client.focused_inactive $bg $bg $fg $bg $bg
@@ -85,11 +87,11 @@ bindsym $ALT+Shift+r restart
 bindsym $ALT+Shift+t exit
 
 # layout modes
-bindsym $ALT+Tab layout toggle tabbed split
-bindsym $ALT+w layout tabbed
-bindsym $ALT+s layout stacking
-bindsym $ALT+e layout toggle split
-bindsym $ALT+b layout toggle splith splitv
+bindsym $ALT+w layout toggle tabbed split
+bindsym $ALT+e split toggle
+bindsym $ALT+Shift+e layout toggle split
+bindsym $ALT+Shift+b move scratchpad
+bindsym $ALT+b exec ~/.config/sway/sway-scratchpad-cycle.sh
 
 # focus
 bindsym $ALT+$left focus left
@@ -173,6 +175,9 @@ bindsym $ALT+Shift+q kill
 
 # Application launcher
 bindsym $ALT+d exec $menu
+
+# Application launcher
+bindsym $ALT+a exec $fm
 
 # Terminal
 bindsym $ALT+t exec $term

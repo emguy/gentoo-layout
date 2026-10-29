@@ -20,7 +20,7 @@ dev-qt/qtbase wayland opengl
 
 # gtk
 x11-libs/cairo         X
-x11-libs/gtk+          wayland -X
+x11-libs/gtk+          wayland X
 media-libs/freetype    harfbuzz
 
 # firefox

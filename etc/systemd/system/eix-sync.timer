@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily eix-sync
+
+[Timer]
+OnCalendar=*-*-* 06:30:00
+Persistent=true
+RandomizedDelaySec=10min
+Unit=eix-sync.service
+
+[Install]
+WantedBy=timers.target

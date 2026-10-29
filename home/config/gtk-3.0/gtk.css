@@ -1,69 +1,219 @@
-/*default color scheme */
-/* @define-color bg_color #f2f1f0; */
-@define-color bg_color #507378;
-@define-color fg_color #4c4c4c;
-@define-color base_color #ffffff;
-@define-color text_color #3C3C3C;
-@define-color selected_bg_color #f07746;
+@define-color bg_color #988fba;
+@define-color fg_color #000000;
+@define-color base_color #A199C0;
+@define-color text_color #000000;
+@define-color selected_bg_color #945a7d;
+@define-color selected_bg_color_hover #9e6888;
 @define-color selected_fg_color #ffffff;
-@define-color tooltip_bg_color #000000;
+@define-color tooltip_bg_color #5A6094;
 @define-color tooltip_fg_color #ffffff;
 
-/* misc colors used by gtk+
- *
- * Gtk doesn't currently expand color variables for style properties. Thus,
- * gtk-widgets.css uses literal color names, but includes a comment containing
- * the name of the variable. Please remember to change values there as well
- * when changing one of the variables below.
- */
-@define-color info_fg_color rgb (181, 171, 156);
-@define-color info_bg_color rgb (252, 252, 189);
-@define-color warning_fg_color rgb (173, 120, 41);
-@define-color warning_bg_color rgb (250, 173, 61);
-@define-color question_fg_color rgb (97, 122, 214);
-@define-color question_bg_color rgb (138, 173, 212);
-@define-color error_fg_color rgb (235, 235, 235);
-@define-color error_bg_color rgb (223, 56, 44);
-@define-color link_color @selected_bg_color;
-@define-color success_color #4e9a06;
-@define-color error_color #df382c;
-
-/* theme common colors */
-@define-color button_bg_color shade (@bg_color, 1.02); /*shade (#cdcdcd, 1.08);*/
-@define-color notebook_button_bg_color shade (@bg_color, 1.02);
+@define-color button_bg_color shade (@bg_color, 1.02);
 @define-color button_insensitive_bg_color mix (@button_bg_color, @bg_color, 0.6);
-@define-color dark_bg_color #3c3b37;
-@define-color dark_fg_color #dfdbd2;
 
-@define-color backdrop_fg_color mix (@bg_color, @fg_color, 0.8);
-@define-color backdrop_text_color mix (@base_color, @text_color, 0.8);
-@define-color backdrop_dark_fg_color mix (@dark_bg_color, @dark_fg_color, 0.75);
-/*@define-color backdrop_dark_bg_color mix (@dark_bg_color, @dark_fg_color, 0.75);*/
-@define-color backdrop_selected_bg_color shade (@bg_color, 0.92);
-@define-color backdrop_selected_fg_color @fg_color;
+* {
+    font-family: "Noto Sans", sans;
+    font-size: 10.5pt;
+}
 
-@define-color focus_color alpha (@selected_bg_color, 0.5);
-@define-color focus_bg_color alpha (@selected_bg_color, 0.1);
+window,
+.background {
+    background-color: @bg_color;
+    color: @fg_color;
+}
 
-@define-color shadow_color alpha(black, 0.5);
+box {
+    background-color: @bg_color;
+}
 
-@define-color osd_fg_color #eeeeec;
-@define-color osd_bg_color alpha(#202526, 0.7);
-@define-color osd_border_color alpha(black, 0.7);
+/* checkboxes */
+checkbutton check,
+treeview.view check {
+  background-image: none;
+  background-color: @bg_color;
+}
 
-@import url("gtk-widgets-borders.css");
-@import url("gtk-widgets-assets.css");
-@import url("gtk-widgets.css");
-@import url("apps/geary.css");
-@import url("apps/unity.css");
-@import url("apps/baobab.css");
-@import url("apps/gedit.css");
-@import url("apps/nautilus.css");
-@import url("apps/gnome-panel.css");
-@import url("apps/gnome-terminal.css");
-@import url("apps/gnome-system-log.css");
-@import url("apps/unity-greeter.css");
-@import url("apps/glade.css");
-@import url("apps/california.css");
-@import url("apps/software-center.css");
-@import url("public-colors.css");
+checkbutton check:checked,
+treeview.view check:checked {
+  background-image: none;
+}
+
+headerbar,
+.titlebar,
+toolbar,
+.toolbar,
+menubar,
+.menubar {
+    background-image: none;
+    background-color: shade (@bg_color, 0.95);
+    color: @fg_color;
+    border-color: shade (@bg_color, 0.8);
+    box-shadow: none;
+}
+
+button {
+    background-image: none;
+    background-color: @bg_color;
+    color: @fg_color;
+    border: 1px solid shade (@bg_color, 0.8);
+    text-shadow: none;
+    box-shadow: none;
+}
+
+button:hover {
+    background-image: none;
+    background-color: shade (@bg_color, 1.12);
+    border-color: shade (@bg_color, 0.75);
+    box-shadow: none;
+}
+
+button:active,
+button:checked {
+    background-image: none;
+    background-color: @bg_color;
+    color: @selected_fg_color;
+    border-color: shade (@selected_bg_color, 0.8);
+    box-shadow: none;
+}
+
+button:disabled {
+    background-image: none;
+    background-color: @button_insensitive_bg_color;
+    color: mix (@fg_color, @bg_color, 0.5);
+    border-color: shade (@bg_color, 0.85);
+    box-shadow: none;
+}
+
+entry {
+    background-image: none;
+    background-color: @base_color;
+    color: @text_color;
+    border: 1px solid shade (@bg_color, 0.8);
+}
+
+entry:focus {
+    border-color: @selected_bg_color;
+}
+
+entry selection {
+    background-color: @selected_bg_color;
+    color: @selected_fg_color;
+}
+
+treeview.view,
+iconview,
+.view {
+    background-color: @base_color;
+    color: @text_color;
+}
+
+paned,
+list,
+list row {
+    background-color: @base_color;
+    color: @text_color;
+}
+
+treeview.view:selected,
+iconview:selected,
+.view:selected {
+    background-color: @selected_bg_color;
+    color: @selected_fg_color;
+}
+
+treeview.view:hover,
+iconview:hover {
+    background-color: @selected_bg_color_hover;
+}
+
+placessidebar,
+.sidebar {
+    background-color: shade (@bg_color, 0.95);
+    color: @fg_color;
+}
+
+placessidebar row:selected,
+.sidebar:selected {
+    background-color: @selected_bg_color;
+    color: @selected_fg_color;
+}
+
+notebook > header {
+    background-color: shade (@bg_color, 0.95);
+}
+
+notebook > header > tabs > tab:checked {
+    background-color: @bg_color;
+    color: @fg_color;
+}
+
+menu,
+.menu,
+.context-menu {
+    background-color: @bg_color;
+    color: @fg_color;
+    border: 1px solid shade (@bg_color, 0.8);
+}
+
+menuitem:hover,
+menu menuitem:hover {
+    background-color: @selected_bg_color;
+    color: @selected_fg_color;
+}
+
+menuitem:disabled,
+menu menuitem:disabled {
+    color: mix (@fg_color, @bg_color, 0.5);
+}
+
+tooltip,
+tooltip.background {
+    background-color: @tooltip_bg_color;
+    color: @tooltip_fg_color;
+    border: 1px solid shade (@tooltip_bg_color, 1.3);
+}
+
+scrollbar {
+    background-color: shade (@bg_color, 0.92);
+}
+
+scrollbar slider {
+    background-color: shade (@bg_color, 0.75);
+    border-radius: 6px;
+    min-width: 6px;
+    min-height: 6px;
+}
+
+scrollbar slider:hover {
+    background-color: @selected_bg_color;
+}
+
+
+
+
+
+
+/* for gimp */
+paned > separator,
+paned.horizontal > separator,
+paned.vertical > separator {
+  background-image: none;
+  background-color: @bg_color;  /* change to any color, e.g. #945a7d or shade(@bg_color, 0.75) */
+  box-shadow: none;
+  border: none;
+  min-width: 2px;   /* width of vertical divider */
+  min-height: 2px;  /* height of horizontal divider */
+}
+
+GimpDock notebook > stack {
+  background-color: @bg_color;
+}
+
+/* for gimp: remove outer enclosing border/background of spin buttons */
+GimpSpinButton,
+spinbutton {
+  background-image: none;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}

@@ -37,3 +37,5 @@ media-gfx/bambustudio-bin ~amd64
 gui-apps/wob ~amd64
 gui-apps/swayosd ~amd64
 
+x11-misc/pcmanfm ~amd64
+x11-libs/libfm ~amd64

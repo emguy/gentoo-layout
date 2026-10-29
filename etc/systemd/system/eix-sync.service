@@ -1,0 +1,12 @@
+[Unit]
+Description=Sync portage trees and update the eix database
+Documentation=man:eix-sync(1) man:eix(5)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/eix-sync
+TimeoutStartSec=1h
+Nice=10
+IOSchedulingClass=idle

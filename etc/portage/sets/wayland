@@ -18,3 +18,4 @@ x11-drivers/nvidia-drivers
 x11-misc/i3status-rust
 x11-misc/xdg-user-dirs
 gui-apps/wob
+x11-misc/pcmanfm
